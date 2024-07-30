@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  aplicacion1:
+    image: app1
+    build: ./app1
+    ports:
+      - "4000:4000"
+    networks:
+      - network  
+
+  aplicacion2:
+    image: app2
+    build: ./app2
+    ports:
+      - "4001:4001"
+    depends_on:
+      - aplicacion1
+    networks:
+      - network
+
+networks:
+  network:
+    external: false      
